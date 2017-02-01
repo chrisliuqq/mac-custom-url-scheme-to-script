@@ -60,3 +60,7 @@ on open location schemeUrl		set oldDelims to AppleScript's text item delimiter
 
 * Just run the application after you finish the previous step to register the url scheme in macos.
 * Restart the browser/terminal/iterm to get the renew url scheme.
+
+## Reference
+
+* <http://jones.kaist.edu/notebook/2012/09/creating-a-custom-url-scheme-via-applescript-and-python.html>
