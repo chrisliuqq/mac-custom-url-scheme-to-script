@@ -12,7 +12,7 @@ An example repository for building own custom url scheme and pass the parameters
 * open `AppleScript`.
 * copy and paste the following code to it.
 
-```
+```actionscript
 on open location schemeUrl		set oldDelims to AppleScript's text item delimiters	-- This saves Applescript's old text item delimiters to the variable oldDelims.	set newDelims to {"custom://", "?param="}	-- This sets the variable newDelims to our new custom url handler prefix and the prefix for the page number argument.	set AppleScript's text item delimiters to newDelims	-- This sets Applescript's text item delimiters to the newDelims.	set param to item 3 of the text items of schemeUrl	-- This extracts the file name from the passed url using the new text item delimiters. The param is the third text item.	set param to do shell script "/bin/bash " & "/path/to/your/script.sh " & param	-- set param to do shell script "python " & "/path/to/your/python/script.py " & param
 	-- This sets the variable param to your script execute result		display alert "done" & param
 	-- This display the result	end open location
@@ -33,13 +33,13 @@ on open location schemeUrl		set oldDelims to AppleScript's text item delimiter
 * Use whatever text editor your like to edit it.
 * Find the line
 
-```
+```xml
 <key>CFBundleIdentifier</key>
 <string>com.apple.ScriptEditor.example.schemeHandler</string>
 ```
 * Paste the following code after it.
 
-```
+```xml
 <key>CFBundleURLTypes</key>
 <array>
 	<dict>
