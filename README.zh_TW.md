@@ -12,10 +12,25 @@ An example repository for building own custom url scheme and pass the parameters
 * 開啟 `工序指令編寫程式`。
 * 複製以下程式碼，貼到 `工序指令編寫程式` 中，新開的檔案。
 
-```
-on open location schemeUrl		set oldDelims to AppleScript's text item delimiters	-- 將預設的間隔符號存起來（目前沒用到）	set newDelims to {"custom://", "?param="}	-- 建立新的間隔符號來取得參數內容	set AppleScript's text item delimiters to newDelims	-- 將工序指令編寫程式的間隔符號套用到剛剛建立的新的	set param to item 3 of the text items of schemeUrl	-- 從收到的網址中依照上面建立的間隔符號取得第三個參數，並設定為 param 變數	set param to do shell script "/bin/bash " & "/path/to/your/script.sh " & param	-- set param to do shell script "python " & "/path/to/your/python/script.py " & param
-	-- 執行 bash 並將結果回存在 param 中		display alert "done" & param
-	-- 顯示結果	end open location
+```applescript
+on open location schemeUrl
+	
+	set oldDelims to AppleScript's text item delimiters
+	-- 將預設的間隔符號存起來（目前沒用到）
+	set newDelims to {"custom://", "?param="}
+	-- 建立新的間隔符號來取得參數內容
+	set AppleScript's text item delimiters to newDelims
+	-- 將工序指令編寫程式的間隔符號套用到剛剛建立的新的
+	set param to item 3 of the text items of schemeUrl
+	-- 從收到的網址中依照上面建立的間隔符號取得第三個參數，並設定為 param 變數
+	set param to do shell script "/bin/bash " & "/path/to/your/script.sh " & param
+	-- set param to do shell script "python " & "/path/to/your/python/script.py " & param
+	-- 執行 bash 並將結果回存在 param 中
+	
+	display alert "done" & param
+	-- 顯示結果
+	
+end open location
 ```
 
 * 將程式碼中的 `custom://` 與 `?param=` 換成您所想要的名字。
@@ -33,13 +48,13 @@ on open location schemeUrl		set oldDelims to AppleScript's text item delimiter
 * 用你喜歡的文字編輯器開啟這個檔案。
 * 找到以下的位置。
 
-```
+```xml
 <key>CFBundleIdentifier</key>
 <string>com.apple.ScriptEditor.example.schemeHandler</string>
 ```
 * 複製底下的程式碼並接著上面的位置貼上。
 
-```
+```xml
 <key>CFBundleURLTypes</key>
 <array>
 	<dict>
